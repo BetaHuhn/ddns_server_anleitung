@@ -7,7 +7,7 @@ git clone https://github.com/arkanis/minidyndns.git
 sudo apt install ruby
 ```
 
-## Einrichtung:
+## Server Einrichtung:
 ```
 cd minidyndns
 sudo cp config.example.yml config.yml
@@ -33,10 +33,15 @@ sudo nano config.yml
 -	Passwort festlegen (hier test123)
 -	A und AAAA record muss nicht festgelegt werden, kann auch später durch den Client über den http Server gesetzt werden
 
+## DNS records ändern:
+- Type;  Hostname; Value
+- `NS` `dyn.betahuhn.de` `ns.betahuhn.de`
+- `A`  `ns.betahuhn.de` `ipadress`
+
 ## Benutzung:
-### Server starten
+### Server starten:
 `sudo ruby dns.rb`
-### Probleme beim starten
+### Probleme beim starten:
 ```
 sudo chown username: db.yml
 sudo chmod u+w db.yml
@@ -46,3 +51,15 @@ Die IP eines Clients kann über den http Server geändert werden, dazu muss übe
 `http://username:password@172.17.4.145/?myip=IPADRESS`
 Es kann auch die aktuellen IP des Clients als update benutzt werden:
 `http://username:password@172.17.4.145` (ohne /?myip=)
+
+### Testen:
+`nslookup itm.dyn.example.com. 172.17.4.145`
+
+### Automatic update:
+- `curl -u username:password https://betahuhn.de:2000/?myip=IPADRESS`
+- or file: `./update_ip.sh`
+- Add to cron: `sudo crontab -e`
+```
+*/30 * * * * /home/pi/update_ip.sh > /dev/null 2>&1
+```
+
