@@ -22,3 +22,27 @@ sudo nano config.yml
 -	Falls https benötigt Zertifikat und Private Key angeben, falls nicht auf „false“ ändern
 -	Benutzer festlegen
 -	Domain des Nameservers festlegen
+
+```
+sudo cp db.example.yml db.yml
+sudo nano config.yml
+```
+![Image](image4.jpg)
+-	Einzelne Benutzer mit eigenen Benutzer Daten anlegen
+-	Username festlegen (hier: itm)
+-	Passwort festlegen (hier test123)
+-	A und AAAA record muss nicht festgelegt werden, kann auch später durch den Client über den http Server gesetzt werden
+
+## Benutzung:
+### Server starten
+`sudo ruby dns.rb`
+### Probleme beim starten
+```
+sudo chown username: db.yml
+sudo chmod u+w db.yml
+```
+### HTTP Interface:
+Die IP eines Clients kann über den http Server geändert werden, dazu muss über HTML basic Auth der Username und das Passwort angegeben werden. Bsp.:
+`http://username:password@172.17.4.145/?myip=IPADRESS`
+Es kann auch die aktuellen IP des Clients als update benutzt werden:
+`http://username:password@172.17.4.145` (ohne /?myip=)
