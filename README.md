@@ -48,12 +48,12 @@ sudo chmod u+w db.yml
 ```
 ### HTTP Interface:
 Die IP eines Clients kann über den http Server geändert werden, dazu muss über HTML basic Auth der Username und das Passwort angegeben werden. Bsp.:
-`http://username:password@172.17.4.145/?myip=IPADRESS`
+`https://username:password@betahuhn.de:2000/?myip=IPADRESS`
 Es kann auch die aktuellen IP des Clients als update benutzt werden:
-`http://username:password@172.17.4.145` (ohne /?myip=)
+`https://username:password@betahuhn.de:2000` (ohne /?myip=)
 
 ### Testen:
-`nslookup itm.dyn.example.com. 172.17.4.145`
+`nslookup pi.dyn.betahuhn.de`
 
 ### Automatic update:
 - `curl -u username:password https://betahuhn.de:2000/?myip=IPADRESS`
