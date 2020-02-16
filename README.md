@@ -1,5 +1,8 @@
 # DDNS Server Anleitung
 
+## About:
+Eine Anleitung wie man einen [minidyndns server](https://github.com/arkanis/minidyndns.git) einrichtet.
+
 ## Installation:
 
 ```
